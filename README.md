@@ -5,7 +5,7 @@
 - [Accordion Example](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/examples/accordion/)
 - [Disclosure Example](https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/examples/disclosure-faq/)
 
->За основу взят аккордеон с сайта <u>[Хакатон](https://gorkycode.ru/)</u>.
+>За основу взят аккордеон с сайта [Хакатон](https://gorkycode.ru/).
 
 ## Стек технологий:
 
