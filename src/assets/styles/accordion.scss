@@ -1,0 +1,98 @@
+@use "@/assets/styles/variables.scss" as *;
+@use "@/assets/styles/mixins.scss" as *;
+
+
+.accordion {
+	border-bottom: 1px solid $text;
+
+	$self: "accordion"; 
+
+	&__icon {
+		background: url("@/assets/icons/button-mask.svg") center center no-repeat;
+		background-size: contain;
+
+		flex: 0 0 auto;
+		position: relative;
+
+		height: clamp(24px, 2.1vw, 40px);
+		width: clamp(24px, 2.1vw, 40px);
+
+		&::before,
+		&::after {
+			background: $accent;
+			border-radius: 5px;
+			
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			
+			content: "";
+			transition: all 0.2s linear;
+			transform: translate(-50%, -50%);
+		}
+
+		&::before {
+			height: $icon-thicness;
+			width: 50%;
+		}
+
+		&::after {
+			height: 50%;
+			width: $icon-thicness;
+		}
+	}
+
+	&__button {
+		align-items: center;
+		display: flex;
+		justify-content: space-between;
+		gap: 15px;
+
+		@include subtitle;
+		
+		padding: clamp(20px, 2.1vw, 40px) 0px clamp(12px, 1vw, 20px);
+		width: 100%;
+
+		transition: all 0s;
+
+		&:hover,
+		&:focus {
+			color: $accent;
+		}
+
+		&:focus {
+			text-decoration: underline;
+		}
+
+		&[aria-expanded="true"] .#{self}__icon {
+			&::before,
+			&::after {
+				background: $text;
+			}
+
+			&::after {
+				transform: translate(-50%, -50%) rotate(-90deg);
+			}
+		}
+	}
+
+	&__title {
+		text-align: left;
+	}
+
+	&__section {
+		transition: all 0.2s linear;
+		overflow: hidden;
+
+		height: 0px;
+		margin-bottom: clamp(12px, 1vw, 20px);
+
+		&[aria-hidden="false"] {
+			margin-bottom: clamp(24px, 2.1vw, 40px);
+		}
+	}
+
+	&__text {
+		@include text;
+	}
+}
