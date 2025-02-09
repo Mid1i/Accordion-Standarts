@@ -9,13 +9,8 @@ export default defineConfig({
       "@/": "/src/",
       "@/assets": "/src/assets",
       "@/components": "/src/components",
-      "@/composables": "/src/composables",
-      "@/helpers": "/src/helpers",
-      "@/interfaces": "/src/interfaces",
-      "@/layouts": "/src/layouts",
-      "@/plugins": "/src/plugins",
-      "@/types": "/src/types",
-      "@/views": "/src/views"
+      "@/hooks": "/src/hooks",
+      "@/types": "/src/types"
     }
   },
   server: {
