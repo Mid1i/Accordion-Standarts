@@ -1,0 +1,23 @@
+@use "./variables.scss" as *;
+
+
+@mixin title {
+	color: $text;
+	font-size: clamp(32px, 4.2vw, 80px);
+	font-weight: 700;
+	line-height: 130%;
+}
+
+@mixin subtitle {
+	color: $text;
+	font-size: clamp(18px, 1.7vw, 32px);
+	line-height: 130%;
+}
+
+@mixin text {
+	color: $text;
+	font-size: clamp(16px, 1vw, 20px);
+	font-weight: 200;
+	line-height: 130%;
+}
+
