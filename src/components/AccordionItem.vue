@@ -1,5 +1,5 @@
 <script setup lang="ts">
-	import { computed, watch } from "vue";
+	import { computed, watch, useId } from "vue";
 	import type { TypeAccordionItem } from "@/types/AccordionItem";
 	import { useAccordion } from "@/hooks/useAccordion";
 
@@ -14,13 +14,15 @@
 		setActive: [id: string | null]
 	}>();
 
-	const props = withDefaults(defineProps<TypeProps>(), {
-		title: "Заголовок",
-		text: "Текст"
-	});
+	const {
+		title = "Заголовок",
+		text = "Текст",
+		activeTab
+	} = defineProps<TypeProps>();
 
-	const id = computed<string>(() => crypto.randomUUID());
-	const isActive = computed<boolean>(() => id.value === props.activeTab);
+	const id = useId();
+	
+	const isActive = computed<boolean>(() => id === activeTab);
 
 	const { sectionRef, setHeight } = useAccordion();
  
