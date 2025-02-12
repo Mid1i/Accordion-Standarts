@@ -1,5 +1,5 @@
 <script setup lang="ts">
-	import { computed, watch, withDefaults } from "vue";
+	import { computed, watch } from "vue";
 	import type { TypeAccordionItem } from "@/types/AccordionItem";
 	import { useAccordion } from "@/hooks/useAccordion";
 
@@ -19,11 +19,10 @@
 		text: "Текст"
 	});
 
-	const id: string = crypto.randomUUID();
-	
-	const { sectionRef, setHeight } = useAccordion();
+	const id = computed<string>(() => crypto.randomUUID());
+	const isActive = computed<boolean>(() => id.value === props.activeTab);
 
-	const isActive = computed<boolean>(() => id === props.activeTab);
+	const { sectionRef, setHeight } = useAccordion();
  
 
 	watch(isActive, () => setHeight(isActive.value));
