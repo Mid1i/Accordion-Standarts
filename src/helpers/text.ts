@@ -1,0 +1,1 @@
+export const formatText = (text: string): string => text.replace(/&nbsp;/g, "\u00A0");
