@@ -1,4 +1,4 @@
 export type TypeAccordionItem = {
-	title: string;
-	text: string;
+	title?: string;
+	text?: string;
 };
