@@ -18,11 +18,10 @@
 		<h2 class="faq__title">{{ title }}</h2>
 		<dl class="faq__content">
 			<DisclosureItem
-				v-for="(item, index) in items"
+				v-for="item in items"
 				@set-Active="setActiveTab"
-				:is-active="`disclosure-${index}` === activeTab"
-				:id="`disclosure-${index}`"
 				:key="item.title"
+				:active-tab
 				:="item"
 			/>
 		</dl>

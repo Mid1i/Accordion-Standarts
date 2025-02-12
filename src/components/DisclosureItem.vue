@@ -1,5 +1,5 @@
 <script setup lang="ts">
-	import { watch } from "vue";
+	import { computed, watch, withDefaults } from "vue";
 	import type { TypeAccordionItem } from "@/types/AccordionItem";
 	import { useAccordion } from "@/hooks/useAccordion";
 
@@ -7,20 +7,26 @@
 
 
 	type TypeProps = TypeAccordionItem & {
-		isActive: boolean;
-		id: string;
+		activeTab: string | null;
 	};
 
 	defineEmits<{
 		setActive: [id: string | null]
 	}>();
 
-	const props = defineProps<TypeProps>();
+	const props = withDefaults(defineProps<TypeProps>(), {
+		title: "Заголовок",
+		text: "Текст"
+	});
 
+	const id: string = crypto.randomUUID();
+	
 	const { sectionRef, setHeight } = useAccordion();
 
+	const isActive = computed<boolean>(() => id === props.activeTab);
+ 
 
-	watch(() => props.isActive, () => setHeight(props.isActive));
+	watch(isActive, () => setHeight(isActive.value));
 </script>
 
 
@@ -33,7 +39,7 @@
 				:aria-expanded="isActive ? 'true' : 'false'"
 				class="accordion__button"
 			>
-				<span class="accordion__title" v-html="title"></span>
+				<span class="accordion__title">{{ title }}</span>
 				<span class="accordion__icon"></span>
 			</button>
 		</dt>
@@ -43,7 +49,7 @@
 			ref="sectionRef"
 			class="accordion__section"
 		>
-			<p class="accordion__text" v-html="text"></p>
+			<p class="accordion__text">{{ text }}</p>
 		</dd>
 	</div>
 </template>

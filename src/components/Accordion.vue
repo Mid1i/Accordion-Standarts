@@ -18,11 +18,10 @@
 		<h2 class="faq__title">{{ title }}</h2>
 		<div class="faq__content">
 			<AccordionItem
-				v-for="(item, index) in items"
-				@set-Active="setActiveTab"
-				:is-active="`accordion-${index}` === activeTab"
-				:id="`accordion-${index}`"
+				v-for="item in items"
+				@set-active="setActiveTab"
 				:key="item.title"
+				:active-tab
 				:="item"
 			/>
 		</div>
